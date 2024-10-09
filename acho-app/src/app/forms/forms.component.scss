@@ -1,0 +1,66 @@
+$border-radius: 13px; 
+$border-color: #17616E; 
+$button-bg-color: #17616E;
+$button-text-color: white; 
+$button-hover-color: #E15C31;
+
+body {
+    font-family: 'DM Sans', sans-serif; 
+}
+
+button {
+    font-family: 'DM Sans', sans-serif;
+}
+
+.rounded-input {
+    border-radius: $border-radius; 
+    border: 1px solid $border-color; 
+    &:focus {
+        border-color: $border-color; 
+        box-shadow: 0 0 5px rgba(23, 97, 110, 0.5); 
+    }
+}
+
+.titulo-geral {
+    color: $border-color; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.mb-3,
+.row.g-3 {
+    padding-left: 10px;
+}
+
+.titulo1 {
+    color: #17616E;
+    padding-left: 10px; 
+    margin-bottom: 5px; 
+    margin-top: 14px;
+}
+
+.titulo2,
+.titulo3 {
+    color: #17616E;
+    padding-left: 10px; 
+    margin-bottom: 2px; 
+    margin-top: 45px;
+}
+
+.label-custom-serv {
+    color: #17616E; 
+}
+
+.btn-custom {
+    background-color: $button-bg-color; 
+    color: $button-text-color; 
+    border: none; 
+    margin-top: 35px;
+    padding: 10px 60px; 
+    border-radius: $border-radius; 
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: $button-hover-color; 
+    }
+}
