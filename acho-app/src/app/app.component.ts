@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { FormsComponent } from "./forms/forms.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [RouterModule],
+  template: `<router-outlet></router-outlet>`,
 })
-export class AppComponent {
-  title = 'acho-app';
-}
+export class AppComponent {}

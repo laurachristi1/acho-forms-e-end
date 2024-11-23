@@ -1,0 +1,109 @@
+$border-radius: 13px; 
+$border-color: #17616E; 
+$button-bg-color: #17616E;
+$button-hover-color: #E15C31;
+$button-text-color: #ffffff;
+$text-color: #004b53;
+
+.container-img {
+  display: grid; 
+  grid-template-columns: 1fr auto; 
+  align-items: center; 
+  padding: 10px; 
+
+  @media (max-width: 768px) { 
+    grid-template-columns: 1fr; /* Empilha imagem e botão */
+    justify-items: center; /* Centraliza os elementos */
+  }
+}
+
+.img_edita img {
+  max-width: 100%;
+  height: auto;
+  border-radius: $border-radius;
+  object-fit: cover;
+  width: 700px; 
+  height: 300px;
+
+  @media (max-width: 768px) {
+    width: 90%; /* Reduz largura para caber em telas menores */
+    height: auto;
+  }
+}
+
+.button-container-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: -500px;
+
+  @media (max-width: 768px) {
+    margin-left: 0; /* Centraliza o botão em telas menores */
+  }
+}
+
+.button-container-img span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: $text-color;
+  margin-bottom: 10px;
+
+  @media (max-width: 480px) {
+    font-size: 14px; /* Reduz o tamanho do texto em telas muito pequenas */
+  }
+}
+
+.image-button {
+  background-color: $button-bg-color;
+  color: $button-text-color;
+  border: none;
+  border-radius: 25%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  @media (max-width: 480px) {
+    width: 35px; 
+    height: 35px; /* Reduz o botão em telas pequenas */
+  }
+}
+
+.image-button:hover {
+  background-color: darken($button-bg-color, 10%);
+}
+
+.rounded-input {
+  border-radius: $border-radius; 
+  border: 1px solid $border-color; 
+
+  &:focus {
+    border-color: $border-color; 
+    box-shadow: 0 0 5px rgba(23, 97, 110, 0.5); 
+  }
+}
+
+.titulo-geral,
+.titulo1,
+.titulo2,
+.titulo3 {
+  color: $border-color;
+}
+
+.titulo1,
+.titulo2,
+.titulo3 {
+  font-size: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 16px;
+  }
+}
+

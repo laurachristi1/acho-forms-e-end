@@ -64,3 +64,74 @@ button {
         background-color: $button-hover-color; 
     }
 }
+
+// Responsividade
+
+@media (max-width: 767px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .titulo1 {
+        font-size: 1.5rem;
+        margin-top: 10px;
+    }
+
+    .titulo2,
+    .titulo3 {
+        font-size: 1.25rem;
+        margin-top: 30px;
+    }
+
+    .form-control {
+        font-size: 1rem;
+    }
+
+    .btn-custom {
+        padding: 10px 30px;
+        width: 100%;
+    }
+
+    .row.g-3 {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .col-2,
+    .col-1,
+    .col-3 {
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .col-6,
+    .col-5 {
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .titulo1 {
+        font-size: 2rem;
+        margin-top: 15px;
+    }
+
+    .titulo2,
+    .titulo3 {
+        font-size: 1.5rem;
+        margin-top: 45px;
+    }
+
+    .form-control {
+        font-size: 1.125rem;
+    }
+
+    .btn-custom {
+        width: auto;
+        padding: 10px 60px;
+    }
+}

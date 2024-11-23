@@ -1,97 +1,119 @@
 <div class="container">
     <div class="d-flex align-items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#17616E" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/>
-        </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#17616E" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/>
+      </svg>
     </div>
-
+  
     <h4 class="titulo1">Formulário de empresa</h4>
-
-    <div class="mb-3">
-        <label for="formGroupExampleInput" class="label-custom">Nome</label>
-        <input type="text" class="form-control rounded-input" id="formGroupExampleInput">
-    </div>
-    <div class="mb-3">
-        <label for="formGroupExampleInput2" class="label-custom">CNPJ</label>
-        <input type="text" class="form-control rounded-input" id="formGroupExampleInput2">
-    </div>
-
-    <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="label-custom">Cursos Oferecidos</label>
-        <textarea class="form-control rounded-input" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
-
-    <form class="row g-3 mb-5">
-        <div class="col-6">
-            <label for="inputEmail4" class="label-custom">Dias de Funcionamento</label>
-            <input type="text" class="form-control rounded-input" placeholder="Segunda à Sexta">
+  
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="nome" class="label-custom">Nome <span class="text-danger">*</span></label>
+        <input type="text" class="form-control rounded-input" id="nome" formControlName="nome">
+        <div *ngIf="formulario.get('nome')?.touched && formulario.get('nome')?.invalid" class="text-danger">
+          Nome é obrigatório.
         </div>
-        <div class="col-3">
-            <label for="inputPassword4" class="label-custom">Horário de Atendimento</label>
-            <input type="text" class="form-control rounded-input" placeholder="16h-18h">
+      </div>
+  
+      <div class="mb-3">
+        <label for="cnpj" class="label-custom">CNPJ <span class="text-danger">*</span></label>
+        <input type="text" class="form-control rounded-input" id="cnpj" formControlName="cnpj">
+        <div *ngIf="formulario.get('cnpj')?.touched && formulario.get('cnpj')?.invalid" class="text-danger">
+          CNPJ é obrigatório e deve ter 14 dígitos.
         </div>
-    </form>
-
-    <div class="titulo_geral mb-4">
+      </div>
+  
+      <div class="mb-3">
+        <label for="cursosOferecidos" class="label-custom">Cursos Oferecidos</label>
+        <textarea class="form-control rounded-input" id="cursosOferecidos" formControlName="cursosOferecidos"></textarea>
+      </div>
+  
+      <div class="titulo-geral mb-4">
         <h4 class="titulo2">Endereço</h4>
-    </div>
-
-    <form class="row g-3 mb-2">
-        <div class="col-2">
-            <label for="inputCity" class="label-custom">CEP</label>
-            <input type="text" class="form-control rounded-input" id="inputCity" placeholder="0613420">
+      </div>
+  
+      <div formGroupName="endereco">
+        <div class="row g-3 mb-2">
+          <div class="col-12 col-md-2">
+            <label for="cep" class="label-custom">CEP <span class="text-danger">*</span></label>
+            <input type="text" class="form-control rounded-input" id="cep" formControlName="cep">
+            <div *ngIf="formulario.get('endereco.cep')?.touched && formulario.get('endereco.cep')?.invalid" class="text-danger">
+              CEP é obrigatório e deve ter 8 dígitos.
+            </div>
+          </div>
+  
+          <div class="col-12 col-md-2">
+            <label for="estado" class="label-custom">Estado <span class="text-danger">*</span></label>
+            <input type="text" class="form-control rounded-input" id="estado" formControlName="estado">
+            <div *ngIf="formulario.get('endereco.estado')?.touched && formulario.get('endereco.estado')?.invalid" class="text-danger">
+              Estado é obrigatório.
+            </div>
+          </div>
+  
+          <div class="col-12 col-md-4">
+            <label for="cidade" class="label-custom">Cidade <span class="text-danger">*</span></label>
+            <input type="text" class="form-control rounded-input" id="cidade" formControlName="cidade">
+            <div *ngIf="formulario.get('endereco.cidade')?.touched && formulario.get('endereco.cidade')?.invalid" class="text-danger">
+              Cidade é obrigatória.
+            </div>
+          </div>
+  
+          <div class="col-12 col-md-4">
+            <label for="bairro" class="label-custom">Bairro</label>
+            <input type="text" class="form-control rounded-input" id="bairro" formControlName="bairro">
+          </div>
         </div>
-        <div class="col-1">
-            <label for="inputState" class="label-custom">Estado</label>
-            <input type="text" class="form-control rounded-input" id="inputState" placeholder="SP">
+  
+        <div class="row g-3 mb-4">
+          <div class="col-12 col-md-9">
+            <label for="rua" class="label-custom">Rua</label>
+            <input type="text" class="form-control rounded-input" id="rua" formControlName="rua">
+          </div>
+          <div class="col-12 col-md-3">
+            <label for="numero" class="label-custom">Número</label>
+            <input type="text" class="form-control rounded-input" id="numero" formControlName="numero">
+          </div>
         </div>
-        <div class="col-3">
-            <label for="inputCity" class="label-custom">Cidade</label>
-            <input type="text" class="form-control rounded-input" id="inputCity" placeholder="São Paulo">
+  
+        <div class="mb-3">
+          <label for="complemento" class="label-custom">Complemento</label>
+          <input type="text" class="form-control rounded-input" id="complemento" formControlName="complemento">
         </div>
-        <div class="col-3">
-            <label for="inputNeighborhood" class="label-custom">Bairro</label>
-            <input type="text" class="form-control rounded-input" id="inputNeighborhood" placeholder="Jardim Gabriela">
-        </div>
-    </form>
-
-    <div class="row g-3 mb-4">
-        <div class="col-9">
-            <label for="teste" class="label-custom">Rua</label>
-            <input type="text" class="form-control rounded-input" placeholder="Campos amarelos">
-        </div>
-        <div class="col-1">
-            <label for="teste" class="label-custom">Número</label>
-            <input type="text" class="form-control rounded-input" placeholder="785">
-        </div>
-    </div>
-
-    <div class="mb-3">
-        <label for="formGroupExampleInput" class="label-custom">Complemento</label>
-        <input type="text" class="form-control rounded-input" id="formGroupExampleInput">
-    </div>
-
-    <div class="titulo_geral mb-4">
+      </div>
+  
+      <div class="titulo-geral mb-4">
         <h4 class="titulo3">Contato</h4>
-    </div>
-
-    <form class="row g-3 mb-4">
-        <div class="col-6">
-            <label for="inputEmail4" class="label-custom">Email</label>
-            <input type="email" class="form-control rounded-input" id="inputEmail4" placeholder="contato@centroremo.com.br">
+      </div>
+  
+      <div formGroupName="contato">
+        <div class="row g-3 mb-4">
+          <div class="col-12 col-md-6">
+            <label for="email" class="label-custom">Email <span class="text-danger">*</span></label>
+            <input type="email" class="form-control rounded-input" id="email" formControlName="email">
+            <div *ngIf="formulario.get('contato.email')?.touched && formulario.get('contato.email')?.invalid" class="text-danger">
+              Email é obrigatório e deve ser válido.
+            </div>
+          </div>
+  
+          <div class="col-12 col-md-6">
+            <label for="telefone" class="label-custom">Número de telefone <span class="text-danger">*</span></label>
+            <input type="text" class="form-control rounded-input" id="telefone" formControlName="telefone">
+            <div *ngIf="formulario.get('contato.telefone')?.touched && formulario.get('contato.telefone')?.invalid" class="text-danger">
+              Telefone é obrigatório e deve ter o formato (XX) XXXXX-XXXX.
+            </div>
+          </div>
         </div>
-        <div class="col-5">
-            <label for="inputPassword4" class="label-custom">Número de telefone</label>
-            <input type="text" class="form-control rounded-input" id="inputPassword4" placeholder="(11) 98765-4321">
-        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="servicos" class="label-custom-serv">Serviços</label>
+        <textarea class="form-control rounded-input" id="servicos" formControlName="servicos" rows="3"></textarea>
+      </div>
+  
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-custom" type="submit" [disabled]="formulario.invalid">Enviar</button>
+      </div>
     </form>
-
-    <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="label-custom-serv">Serviços</label>
-        <textarea class="form-control rounded-input" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
-
-    <div class="d-flex justify-content-end">
-        <button class="btn btn-custom" type="submit">Enviar</button>
-    </div>
-</div>
+  </div>
+  
